@@ -27,25 +27,70 @@ Analyze every user input and categorize it roughly into one of three areas, adap
 Tone: Conversational, warm, heavily empathetic, uplifting, and clear. Use short paragraphs.
 """
 
+SOS_SYSTEM_INSTRUCTION = """
+You are StressBud in EMERGENCY SOS MODE. You are now acting as a crisis therapist and emotional first responder.
+
+The user has pressed the SOS button, which means they may be in acute distress — experiencing a panic attack, severe anxiety, depressive episode, or suicidal thoughts.
+
+YOUR ABSOLUTE PRIORITIES:
+1. SAFETY FIRST: If anyone expresses suicidal ideation, self-harm urges, or danger to themselves, ALWAYS provide crisis helpline numbers and urge them to call immediately.
+2. BE EXTREMELY GENTLE: Use soft, calming language. Short sentences. No overwhelming paragraphs.
+3. VALIDATE their feelings: "What you're feeling is real. You are not alone."
+4. GROUND THEM: Offer immediate grounding techniques:
+   - 5-4-3-2-1 sensory grounding (5 things you see, 4 you hear, 3 you touch, 2 you smell, 1 you taste)
+   - Box breathing (inhale 4s, hold 4s, exhale 4s, hold 4s)
+   - Progressive muscle relaxation
+5. NEVER diagnose. NEVER minimize. NEVER say "just calm down" or "it's not that bad."
+6. Remind them: "This feeling is temporary. You have survived every bad moment so far."
+7. If they seem in immediate danger, strongly encourage calling a helpline or going to a trusted adult/friend.
+
+Crisis helplines to reference when relevant:
+- iCall: 9152987821
+- Vandrevala Foundation: 1860-2662-345 (24/7)
+- AASRA: 9820466726
+- Snehi: 044-24640050
+- Emergency: 112
+
+Tone: Extremely warm, gentle, patient, non-judgmental. Like a caring friend who also has professional training. Use emojis sparingly but warmly (💙, 🌿).
+Keep responses SHORT and focused. Ask one question at a time. Don't overwhelm them.
+"""
+
 # Initialize the model with the system instruction
 try:
     model = genai.GenerativeModel(
-        model_name="gemini-2.5-flash", # Using the latest available flash model
+        model_name="gemini-2.5-flash",
         system_instruction=SYSTEM_INSTRUCTION
     )
-    # Using a single global chat session for simplicity in the basic example. 
-    # In a real app, you'd maintain a session ID per user.
     chat_session = model.start_chat(history=[])
 except Exception as e:
     model = None
     chat_session = None
-    
+
+# Initialize the SOS model with crisis-focused instruction
+try:
+    sos_model = genai.GenerativeModel(
+        model_name="gemini-2.5-flash",
+        system_instruction=SOS_SYSTEM_INSTRUCTION
+    )
+    sos_chat_session = sos_model.start_chat(history=[])
+except Exception as e:
+    sos_model = None
+    sos_chat_session = None
+
 def get_chat_response(user_message: str):
     if not chat_session:
         return "Gemini API is not configured currently."
-        
     try:
         response = chat_session.send_message(user_message)
+        return response.text
+    except Exception as e:
+        return f"Error connecting to AI: {str(e)}"
+
+def get_sos_chat_response(user_message: str):
+    if not sos_chat_session:
+        return "Gemini API is not configured currently."
+    try:
+        response = sos_chat_session.send_message(user_message)
         return response.text
     except Exception as e:
         return f"Error connecting to AI: {str(e)}"
