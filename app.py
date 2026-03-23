@@ -48,15 +48,16 @@ st.markdown("""
     div[data-testid="stColumn"]:nth-child(3) button {
         width: 100%;
         padding: 1rem 1.5rem;
-        font-size: 1.1rem;
-        font-weight: 600;
-        border-radius: 16px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border-radius: 50px;
         border: 2px solid rgba(255,255,255,0.1);
         background: linear-gradient(145deg, #1a1a2e, #16213e);
         color: #e0e0e0;
         cursor: pointer;
         transition: all 0.3s ease;
-        min-height: 80px;
+        height: 100px;
+        min-height: 100px;
     }
     div[data-testid="stColumn"]:nth-child(1) button:hover,
     div[data-testid="stColumn"]:nth-child(3) button:hover {
@@ -68,15 +69,16 @@ st.markdown("""
     /* SOS Button */
     div[data-testid="stColumn"]:nth-child(2) button {
         width: 100%;
-        padding: 1.25rem 2rem;
-        font-size: 1.4rem;
+        padding: 1rem 1.5rem;
+        font-size: 1.2rem;
         font-weight: 800;
-        border-radius: 20px;
+        border-radius: 50px;
         border: 3px solid rgba(255, 60, 60, 0.6);
         background: linear-gradient(145deg, #8b0000, #cc0000, #ff1a1a);
         color: #ffffff;
         cursor: pointer;
         animation: sos-pulse 2s ease-in-out infinite;
+        height: 100px;
         min-height: 100px;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -184,11 +186,13 @@ if "sos_initialized" not in st.session_state:
 # ─── HOME / Landing Page ─────────────────────────────────────────────────────
 if st.session_state.mode == "home":
     st.markdown('<div class="hero-title">🌱 StressBud</div>', unsafe_allow_html=True)
+    st.markdown("")
+    st.markdown("")
     st.markdown('<div class="hero-subtitle">Your companion for exam season : mentor, friend, therapist, advisor.</div>', unsafe_allow_html=True)
 
     st.markdown("---")
 
-    col1, col2, col3 = st.columns([1, 1.3, 1], gap="medium")
+    col1, col2, col3 = st.columns([1, 1, 1], gap="medium")
 
     with col1:
         if st.button("📚 Syllabus", use_container_width=True, key="btn_syllabus"):
