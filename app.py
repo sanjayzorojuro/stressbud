@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+from firebase_auth_component import firebase_auth_button
 
 API_URL = "http://127.0.0.1:8000/api/chat"
 SOS_API_URL = "http://127.0.0.1:8000/api/sos-chat"
@@ -182,9 +183,24 @@ if "sos_messages" not in st.session_state:
     st.session_state.sos_messages = []
 if "sos_initialized" not in st.session_state:
     st.session_state.sos_initialized = False
+if "user" not in st.session_state:
+    st.session_state.user = None
 
 # ─── HOME / Landing Page ─────────────────────────────────────────────────────
 if st.session_state.mode == "home":
+    col_spacer, col_login = st.columns([4.5, 1.5])
+    with col_login:
+        if st.session_state.user is None:
+            user_data = firebase_auth_button(key="login_button")
+            if user_data:
+                st.session_state.user = user_data
+                st.rerun()
+        else:
+            st.markdown(f"**Hello, {st.session_state.user.get('displayName', 'User')}!**")
+            if st.button("Sign Out", use_container_width=True):
+                st.session_state.user = None
+                st.rerun()
+
     st.markdown('<div class="hero-title">🌱 StressBud</div>', unsafe_allow_html=True)
     st.markdown("")
     st.markdown("")
