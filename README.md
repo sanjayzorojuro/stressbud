@@ -161,7 +161,12 @@ Frontend runs at → `http://localhost:8501`
 | `general` | anything else | General support |
 
 ---
+## Screenshots
 
+![Title](res/1.png)
+
+
+---
 
 ##  Disclaimer
 
