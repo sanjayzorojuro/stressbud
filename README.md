@@ -6,7 +6,7 @@ StressBud is an AI-powered chatbot that helps students cope with exam-related st
 
 ##  Problem Statement
 
-Students face three major stressors during exam season:
+Students face three major stressors during exam season :
 
 | Category | Examples |
 |---|---|
