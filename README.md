@@ -164,15 +164,35 @@ Frontend runs at → `http://localhost:8501`
 ## Screenshots
 
 ![Title](res/1.png)
+
+---
 ![Title](res/2.png)
+
+---
 ![Title](res/3.png)
+
+---
 ![Title](res/4.png)
+
+---
 ![Title](res/5.png)
+
+---
 ![Title](res/6.png)
+
+---
 ![Title](res/7.png)
+
+---
 ![Title](res/8.png)
+
+---
 ![Title](res/9.png)
+
+---
 ![Title](res/10.png)
+
+---
 ![Title](res/11.png)
 
 
