@@ -1,4 +1,4 @@
-# 🌱 StressBud — Your Exam Season Companion
+# 🌱 StressBud — Your Personal Exam Season Companion
 
 StressBud is an AI-powered chatbot that helps students cope with exam-related stress. It detects the type of stress a student is facing and responds with empathy, practical advice, and mental health resources.
 
