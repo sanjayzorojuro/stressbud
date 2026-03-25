@@ -101,7 +101,6 @@ Test it at → `http://127.0.0.1:8000/docs`
 Open a **new terminal**:
 
 ```bash
-cd frontend
 pip install -r requirements.txt
 streamlit run app.py
 ```
