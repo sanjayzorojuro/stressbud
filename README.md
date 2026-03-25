@@ -24,7 +24,6 @@ Students face three major stressors during exam season:
 | Backend | FastAPI (Python) |
 | AI Model | Google Gemini 1.5 Flash |
 | NLP | Keyword-based sentiment detection |
-| Deployment | Render (backend) + Streamlit Cloud (frontend) |
 
 
 ---
