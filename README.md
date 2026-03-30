@@ -207,4 +207,4 @@ StressBud is an AI companion and is **not a substitute for professional mental h
 
 ##  Team
 
-Built for students, by students — during a hackathon.
+Built for students, by students - during a hackathon.
